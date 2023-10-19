@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<style>
+		body {
+			background-image: url('/static/images/mario-back.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.card {
+			background-color: white;
+			padding: 50px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="card">
+		<h2>Login</h2>
+		<form method="POST" action="{{ url_for('login') }}">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Submit</button>
+			</br>
+			<a href="{{ url_for('homePage') }}" class="btn btn-primary btn-block">Home</a>
+
+
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+ 
+</body>
+</html>

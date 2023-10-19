@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your Score</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+     body {
+      background-image: url('/static/images/mario-back.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .card {
+      background-color: white;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    </style>
+  </head>
+  <body>
+ <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Your Score</h1>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">You scored {{ score }} out of {{ total }}</h5>
+              {% if score <= 3 %}
+              <p class="text-center">Better luck next time!</p>
+              </br>
+              <p id="value0"></p>
+              <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+              {% elif score <= 5 %}
+              <p class="text-center">Not bad, but you can do better!</p>
+              </br>
+              {% elif score <= 7 %}
+              <p class="text-center">Don't quit you almost got it! Here's a gift to motivate you!</p>
+              </br>
+              <p class="text-center">bmV0LXNlY3tQbEB5LUdAbTN9=</p>
+              </br>
+              <p id="value1"></p>
+              <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+              {% elif score <= 9 %}
+              <p class="text-center">Wow, you're a pro! can you ace it?</p>
+              </br>
+              <p id="value2"></p>
+              <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+              {% elif score == 10 %}
+              <p class="text-center">Congratulations, you aced it!</p>
+              </br>
+              <p id="value3"></p>
+              <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+              {% endif %}
+              <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-block">Play Again</a>
+              <br>
+              <a href="{{ url_for('homePage') }}" class="btn btn-primary btn-block">Home</a>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

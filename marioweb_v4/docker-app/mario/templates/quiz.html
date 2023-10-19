@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultimate Mario Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      background-image: url('/static/images/mario-back.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .card {
+      background-color: white;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .card img {
+    max-width: 100%;
+    height: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">{{ question.question }}</h1>
+      {% if question.image %}
+    <img src="{{ url_for('static', filename=question.image) }}" alt="{{ question.question }}" class="img-fluid mx-auto d-block mb-4">
+      {% endif %}
+      <hr>
+      <form method="POST" action="{{ url_for('quiz') }}">
+        <input type="hidden" name="question_index" value="{{ session['question_index'] }}">
+        {% for answer in question.answers %}
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="answer" value="{{ loop.index0 }}" id="answer{{ loop.index0 }}" required>
+            <label class="form-check-label" for="answer{{ loop.index0 }}">
+              {{ answer.text }}
+            </label>
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script nonce="3f31feefda72a6dbd0ced1b9eed3830c">
+    $(document).ready(function() {
+      $('#submit-quiz').click(function() {
+        var answers = $('form').serializeArray();
+        $.ajax({
+          type: 'POST',
+          url: '/score',
+          data: JSON.stringify(answers),
+          contentType: 'application/json;charset=UTF-8',
+          success: function(response) {
+            window.location.href = '/score?score=' + response.score + '&total=' + response.total;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

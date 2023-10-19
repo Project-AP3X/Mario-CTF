@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' * 'nonce-3f31feefda72a6dbd0ced1b9eed3830c'">
+
+    <style>
+        body {
+            background-image: url('/static/images/mario-back.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome back, CHALLENGER!</h1>
+        <p>You're already logged in.</p>
+        <h2>Choose your path:</h2>
+        <div class="btn-group-vertical mt-4" role="group" aria-label="Menu">
+          <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take a quiz</a>
+          <a href="{{ url_for('verify_flag') }}" class="btn btn-primary">Verify Flags</a>
+          <div id="my-hidden-element" style="display: none;">Remember to put it the flags</div>
+        </div>
+        
+    <script src="{{ url_for('static', filename='js/logoutscript.js') }}" data-message="{{ message }}" nonce="3f31feefda72a6dbd0ced1b9eed3830c"></script>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger mt-4">Logout</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

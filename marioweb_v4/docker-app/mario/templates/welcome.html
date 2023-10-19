@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<style>
+		body {
+			background-image: url('/static/images/mario-back.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.card {
+			background-color: white;
+			padding: 50px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="card">
+		<h1>WELCOME CHALLENGER</h1>
+		<h2>Choose your path:</h2>
+		<div class="btn-group-vertical mt-4" role="group" aria-label="Menu">
+		  <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take a quiz</a>
+		  <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+		  <a href="{{ url_for('verify_flag') }}" class="btn btn-primary">Verify Flags</a>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+ 
+</body>
+</html>
